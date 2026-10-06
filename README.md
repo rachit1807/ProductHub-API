@@ -6,6 +6,12 @@ A full-stack product catalog built with **Node.js**, **Express**, and **vanilla 
 
 ProductHub brings common catalog workflows into one small application: browse and search a product list, refine results with filters and sorting, save favorites, review catalog statistics, and create, edit, or delete products. The browser client communicates with the Express API using the Fetch API.
 
+## About the author
+
+**Rachit Tripathi** · [GitHub: @rachit1807](https://github.com/rachit1807)
+
+I am an aspiring software developer interested in full-stack web development and building practical applications. I created ProductHub to apply REST API design, Express.js, CRUD operations, input validation, and browser-to-server integration in one project.
+
 ## Features
 
 - **Catalog browsing** — load products and view detailed product information.
