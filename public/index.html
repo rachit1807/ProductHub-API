@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProductHub API</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🛒 ProductHub API</h1>
+        <p>RESTful API Design &amp; Integration</p>
+    </header>
+
+    <main>
+
+        <div class="controls">
+
+            <button id="loadBtn" type="button">
+                Load Products
+            </button>
+
+            <button id="themeToggle" type="button" class="theme-btn">
+                🌙 Dark Mode
+            </button>
+
+            <button id="favoritesBtn" type="button" class="theme-btn">
+                ❤️ View Favorites
+            </button>
+
+            <button id="addProductBtn" type="button" class="theme-btn add-product-btn">
+                ＋ Add Product
+            </button>
+
+            <div class="search-box">
+                <input
+                    type="number"
+                    id="searchInput"
+                    placeholder="Search by Product ID"
+                    min="1"
+                    autocomplete="off"
+                >
+
+                <button id="searchBtn" type="button">
+                    Search
+                </button>
+
+                <button id="clearBtn" type="button">
+                    Clear
+                </button>
+            </div>
+
+            <div class="name-search">
+                <input
+                    type="text"
+                    id="nameSearch"
+                    placeholder="Search products by name..."
+                    autocomplete="off"
+                >
+            </div>
+
+        </div>
+
+        <div class="category-filter">
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Wearables">Wearables</option>
+                <option value="Audio">Audio</option>
+            </select>
+        </div>
+
+        <div class="sort-box">
+            <select id="sortSelect">
+                <option value="">Sort Products</option>
+                <option value="priceLow">Price: Low to High</option>
+                <option value="priceHigh">Price: High to Low</option>
+                <option value="nameAZ">Name: A-Z</option>
+                <option value="nameZA">Name: Z-A</option>
+            </select>
+        </div>
+
+        <section class="statistics" aria-label="Product statistics">
+            <article class="stat-card">
+                <span class="stat-label">Total Products</span>
+                <strong class="stat-value" id="statTotal">—</strong>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-label">Categories</span>
+                <strong class="stat-value" id="statCategories">—</strong>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-label">Average Price</span>
+                <strong class="stat-value" id="statAveragePrice">—</strong>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-label">Favorites</span>
+                <strong class="stat-value" id="statFavorites">—</strong>
+            </article>
+        </section>
+
+        <h3 id="productCount"></h3>
+
+        <div id="loader" class="loader-container">
+            <div class="loader"></div>
+            <p>Loading Products...</p>
+        </div>
+
+        <div id="products"></div>
+
+    </main>
+
+    <div
+        id="productFormModal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="productFormTitle"
+    >
+        <div class="modal-content product-form-content">
+            <button
+                type="button"
+                class="close-btn"
+                id="closeProductForm"
+                aria-label="Close"
+            >&times;</button>
+
+            <h2 id="productFormTitle">Add Product</h2>
+
+            <form id="productForm">
+                <label class="form-field">
+                    <span>Product name</span>
+                    <input
+                        id="productName"
+                        name="name"
+                        type="text"
+                        maxlength="100"
+                        required
+                    >
+                </label>
+
+                <label class="form-field">
+                    <span>Category</span>
+                    <input
+                        id="productCategory"
+                        name="category"
+                        type="text"
+                        maxlength="60"
+                        required
+                    >
+                </label>
+
+                <label class="form-field">
+                    <span>Price (₹)</span>
+                    <input
+                        id="productPrice"
+                        name="price"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+                </label>
+
+                <label class="form-field">
+                    <span>Description (optional)</span>
+                    <textarea
+                        id="productDescription"
+                        name="description"
+                        rows="3"
+                        maxlength="500"
+                    ></textarea>
+                </label>
+
+                <button
+                    id="saveProductBtn"
+                    class="save-product-btn"
+                    type="submit"
+                >Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+
+            <span class="close-btn" id="closeModal">&times;</span>
+
+            <h2 id="modalTitle">Product Name</h2>
+
+            <p>
+                <strong>ID:</strong>
+                <span id="modalId"></span>
+            </p>
+
+            <p>
+                <strong>Category:</strong>
+                <span id="modalCategory"></span>
+            </p>
+
+            <p>
+                <strong>Price:</strong>
+                ₹<span id="modalPrice"></span>
+            </p>
+
+            <p id="modalDescription">
+                No description available.
+            </p>
+
+        </div>
+    </div>
+
+    <div
+        id="toastContainer"
+        class="toast-container"
+        aria-live="polite"
+        aria-atomic="false"
+    ></div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

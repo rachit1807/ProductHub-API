@@ -1,0 +1,24 @@
+{
+  "name": "producthub-api",
+  "version": "1.0.0",
+  "description": "RESTful API Design & Integration Project using Node.js, Express, and Fetch API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "rest-api",
+    "crud",
+    "fetch-api",
+    "javascript"
+  ],
+  "author": "Rachit Tripathi",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
