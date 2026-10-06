@@ -5,7 +5,7 @@ const path = require("path");
 const apiRoutes = require("./routes/api");
 
 const app = express();
-const PORT = 8081;
+const PORT = process.env.PORT || 8081;
 
 app.use(cors());
 app.use(express.json());
@@ -24,6 +24,10 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.listen(PORT, () => {
-    console.log(`🚀 Server is running on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+    app.listen(PORT, "0.0.0.0", () => {
+        console.log(`🚀 Server is running on http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
