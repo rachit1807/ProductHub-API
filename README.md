@@ -170,28 +170,27 @@ The interface uses HTML, CSS, and vanilla JavaScript to provide a layout intende
 
 ## Application Workflow
 
-The following flowchart illustrates the application's main request-and-response workflow.
+
+
+The following flowchart illustrates how the frontend communicates with the backend API.
 
 ```mermaid
-flowchart TD
-    A["User opens ProductHub"] --> B["Browser Interface"]
-    B --> C["HTML, CSS and JavaScript"]
-    C --> D["User performs an action"]
-    D --> E["Fetch API Request"]
-    E --> F["Express Server"]
-    F --> G["API Routes"]
-    G --> H["Product Controller"]
-    H --> I["Validate Request"]
-    I --> J{"Request valid?"}
-    J -- "No" --> K["Return Error Response"]
-    K --> B
-    J -- "Yes" --> L["Process Product Operation"]
-    L --> M["In-Memory Product Data"]
-    M --> N["Return JSON Response"]
-    N --> O["Update Browser Interface"]
-    O --> B
+graph TD
+    A[User opens ProductHub] --> B[Browser Interface]
+    B --> C[User performs an action]
+    C --> D[Fetch API Request]
+    D --> E[Express Server]
+    E --> F[API Routes]
+    F --> G[Product Controller]
+    G --> H{Request valid?}
+    H -->|No| I[Return Error Response]
+    H -->|Yes| J[Process Product Operation]
+    J --> K[In-Memory Product Data]
+    K --> L[Return JSON Response]
+    L --> M[Update Browser Interface]
+    M --> B
+    I --> B
 ```
-
 ### How the Workflow Works
 
 1. The user opens the ProductHub application.
